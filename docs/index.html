@@ -1,4 +1,7 @@
 <head>
+    <!DOCTYPE html>
+    <html lang="en">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -19,11 +22,6 @@
             font-weight: 700;
             line-height: 95%; /* 195.429px */
             letter-spacing: -10.286px;
-            text-decoration-style: solid;
-            text-decoration-skip-ink: auto;
-            text-decoration-thickness: auto;
-            text-underline-offset: auto;
-            text-underline-position: from-font;
         }
 
         .inter {
@@ -60,7 +58,7 @@
             display: flex;
             width: 280px;
             height: 324px;
-            padding: 64px 40px;
+            padding: 64px 28px;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -86,40 +84,77 @@
             gap: 10px;
         }
 
-        .button {
+        .inter-light-btn {
             opacity: 0.3;
             background: #F0F0F0;
             color: #131313;
             text-align: center;
             font-family: Inter;
             font-size: 32px;
-            font-style: normal;
             font-weight: 400;
             line-height: 95%; /* 30.4px */
             letter-spacing: -1.6px;
         }
+
+        .inter-bold-btnCalc {
+            opacity: 0.3;
+            background: #F0F0F0;
+            color: #131313;
+            text-align: center;
+            font-family: Inter;
+            font-size: 48px;
+            font-style: bold;
+            font-weight: 700;
+            line-height: 98%; /* 30.4px */
+            letter-spacing: -1px;
+            text-transform: capitalize;
+        }
+
+        #plusButton {
+            width: 80px;
+            height: 80px;
+            
+        }
+
+        #iniCardsDisplay {
+            display: flex; 
+            gap: 64px; 
+            align-items: center;
+        }
         
         </style>
 
-<!DOCTYPE html>
 </head>
 
 <body id="screen">
     <h1 class="inter-header">
         Dungeons & Dragons <br> Initiative Sorter
     </h1>
-
-    <div class="button" id="button">
+    <div class="inter-light-btn" id="button">
         Edit Initiatives
     </div>
 
-    <input 
-        id="iniCard"
-        class="roboto-condensed-iniCard"
-        type="text" 
-        maxlength="2" 
-        placeholder="00">
+    <div id="iniCardsDisplay">
+        <input 
+            id="iniCard"
+            class="roboto-condensed-iniCard"
+            type="number"
+            maxlength="2" 
+            placeholder="00"
+            min="0">
+
+        <div id="plusButtons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" fill="#F0F0F0"/>
+                <path d="M43.9922 35.9951H64V43.9951H43.9922V64H35.9922V43.9951H16V35.9951H35.9922V16H43.9922V35.9951Z" fill="#131313"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="inter-bold-btnCalc" id="button">
+        Calculate
+    </div>
     
-    <p class="roboto-condensed-iniCard ">I'm sorry, user, the final web programming assignment is in another castle</p>
+    <p class="roboto-condensed-iniCard ">The page is under construction!</p>
 
 </body>
