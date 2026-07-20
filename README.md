@@ -5,8 +5,8 @@ A simple web programming project main goal of which is to sort initiative for yo
 
 ## Road map
 - [ ] Basic mode
-    - [ ] Double digit numbers input
-    - [ ] Sortation of entered numbers input
+    - [X] Double digit numbers input
+    - [X] Sortation of entered numbers input
     - [ ] Ability to change entered data before and after sortation
 - [ ] Advanced mode
 
