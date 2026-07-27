@@ -17,6 +17,7 @@
             flex-direction: column;
             align-items: center;
         }
+
         .header {
             color: rgba(240,240,240, 0.6);
             text-align: center;
@@ -50,6 +51,15 @@
             align-items: center;
             margin: 0;
             gap: 32px;
+        }
+
+        .imgIcon {
+            width: 100%;
+            display: block;
+            align-items: center;
+            margin: 0 auto;
+            border-right: 2px solid #F0F0F0;
+            border-bottom: 2px solid #F0F0F0;
         }
 
         #iniCard {
@@ -143,15 +153,29 @@
             top: 0%; 
             right: 0%;
             background: #F0F0F0;
-            color: #131313;
             height: 32px;
             width: 32px;
             border: 0;
+            display: flex;
+            padding: 0;
+        }
+
+        #btnToggle {
+            position: absolute; 
+            align-items: center;
+            top: 0%; 
+            left: 0%;
+            background: #F0F0F0;
+            height: 32px;
+            width: 32px;
+            border: 0;
+            padding: 0;
         }
 
         .ascii-art { 
             position: absolute;
             padding-top: 10%;
+            padding-left: 1.3%;
             z-index: -1;
             left: 0;
             right: 0;
@@ -176,7 +200,9 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
+
         
+
     </style>
 
 </head>
@@ -191,9 +217,7 @@
             <button
                 class = "btnSquare"
                 onclick = "startNew()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-                    <path d="M34 45H29.0928C30.9886 49.1306 35.1584 52 40.001 52C44.4413 52 48.3143 49.586 50.3896 46.001L57.3223 50.0029C53.8637 55.979 47.4023 60 40.001 60C30.6819 60 22.8531 53.626 20.6328 45H16L25 35L34 45ZM40.001 20C49.3201 20 57.149 26.374 59.3691 35H64L55 45L46 35H50.9111C49.0153 30.8691 44.8438 28 40.001 28C35.5587 28 31.6831 30.4154 29.6084 34.0029L22.6758 30C26.1338 24.0218 32.598 20 40.001 20Z" fill="#131313"/>
-                </svg>
+                <img class = "imgIcon" src = "media/svg/btnNew.svg">
             </button>
             <input 
                 id="iniEnterInput"
@@ -202,17 +226,14 @@
             <button 
                 id = "addBtn"
                 onclick = "createCard()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 80 80" fill="none">
-                    <path d="M43.9922 35.9951H64V43.9951H43.9922V64H35.9922V43.9951H16V35.9951H35.9922V16H43.9922V35.9951Z" fill="#131313"/>
-                </svg>
+                <img class = "imgIcon" src = "media/svg/btnPlus.svg">
             </button>
             <button
                 class = "btnSquare"
                 onclick = "sortCards()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 80 80" fill="none">
-                    <path d="M29 48H62V56H29V64L16 52L29 40V48ZM64 28L51 40V32H18V24H51V16L64 28Z" fill="#131313"/>
-                </svg>
+                <img class = "imgIcon" src = "media/svg/btnCalc.svg">
             </button>
+
         </div>
         
         <div id="iniCardsDisplay">
@@ -397,12 +418,27 @@
 
                 const removeBtn = document.createElement("button");
                 removeBtn.setAttribute("id", "btnRemove");
-                removeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 40 40" fill="none"><path d="M25.7119 19.9955L40 34.286L34.287 40L19.999 25.7095L5.71299 39.9979L0 34.2839L14.286 19.9955L0.0090665 5.71608L5.72206 0.00209182L19.999 14.2815L34.2779 0L39.9909 5.71399L25.7119 19.9955Z" fill="#131313"/></svg>'
+                removeBtn.innerHTML = '<img class="imgIcon" src="media/svg/btnDelete.svg">'
                 removeBtn.addEventListener("click", function (e) {
                     e.preventDefault();
                     removeCard(card);
                 });
                 card.appendChild(removeBtn);
+
+                let states = ["media/svg/iconToggleNeut.svg", "media/svg/iconToggleAngry.svg", "media/svg/iconToggleSmile.svg"];
+                let counter = 0;
+                let bgColors = ["#F0F0F0;", "red;", "green;"]
+
+                const charToggleBtn = document.createElement("button");
+                charToggleBtn.setAttribute("id", "btnToggle");
+                charToggleBtn.innerHTML = '<img class="imgIcon" src = "' + states[0] + '">';
+                charToggleBtn.addEventListener("click", function () {
+                    counter++;
+                    const toggleState = states[counter % states.length];
+                    const bgColor = bgColors[counter % bgColors.length];
+                    charToggleBtn.innerHTML = '<img class="imgIcon" style = "background-color:' + bgColor + '"' + ' src = "' + toggleState + '">';
+                })
+                card.appendChild(charToggleBtn);
             });
         }
 
