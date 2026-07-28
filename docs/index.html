@@ -405,6 +405,9 @@
         let inits = [];
         let initialCardId = 1;
 
+        let states = ["media/svg/iconToggleNeut.svg", "media/svg/iconToggleAngry.svg", "media/svg/iconToggleSmile.svg"];
+        let bgColors = ["#F0F0F0;", "red;", "green;"]
+
         function render() {
             const displayID = document.getElementById("iniCardsDisplay")
             displayID.innerHTML = ""
@@ -425,17 +428,13 @@
                 });
                 card.appendChild(removeBtn);
 
-                let states = ["media/svg/iconToggleNeut.svg", "media/svg/iconToggleAngry.svg", "media/svg/iconToggleSmile.svg"];
-                let counter = 0;
-                let bgColors = ["#F0F0F0;", "red;", "green;"]
-
                 const charToggleBtn = document.createElement("button");
                 charToggleBtn.setAttribute("id", "btnToggle");
-                charToggleBtn.innerHTML = '<img class="imgIcon" src = "' + states[0] + '">';
+                charToggleBtn.innerHTML = '<img class="imgIcon" src = "' + states[item.state % states.length] + '" style = "background-color:' + bgColors[item.state % bgColors.length] + '">';
                 charToggleBtn.addEventListener("click", function () {
-                    counter++;
-                    const toggleState = states[counter % states.length];
-                    const bgColor = bgColors[counter % bgColors.length];
+                    item.state++;
+                    const toggleState = states[item.state % states.length];
+                    const bgColor = bgColors[item.state % bgColors.length];
                     charToggleBtn.innerHTML = '<img class="imgIcon" style = "background-color:' + bgColor + '"' + ' src = "' + toggleState + '">';
                 })
                 card.appendChild(charToggleBtn);
@@ -458,7 +457,7 @@
                 return;
             }
 
-            inits.push({id:cardId, value:inputValue});
+            inits.push({id:cardId, value:inputValue, state:0});
             console.log("updated " + inits);
 
             input.value = "";
