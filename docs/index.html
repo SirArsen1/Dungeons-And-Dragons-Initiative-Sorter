@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -19,16 +22,21 @@
         }
 
         .header {
-            color: rgba(240,240,240, 0.6);
-            text-align: center;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            text-align: left;
+            
+            color: #F0F0F0;
             font-family: "Jacquard 12", system-ui;
             font-weight: 400;
             font-style: normal;
-            font-size: 32px;
+            font-size: 24px;
             font-style: normal;
             font-weight: 400;
             line-height: 75%; /* 30.4px */
             letter-spacing: -1px;
+            filter:brightness(0.3);
         }
 
         .footer {
@@ -40,6 +48,20 @@
             align-items: center;
             height: 64px;
             gap: 16px;
+        }
+
+        #footerBtn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Inter;
+            border: 0;
+            padding: 0;
+            color:#AAAAAA;
+        }
+        #footerBtn:hover {
+            color: #999999;
         }
 
         .main {
@@ -54,37 +76,45 @@
         }
 
         .imgIcon {
-            width: 100%;
             display: block;
-            align-items: center;
-            margin: 0 auto;
-            border-right: 2px solid #F0F0F0;
-            border-bottom: 2px solid #F0F0F0;
+            width: 48px;
+            height: 48px;
         }
 
         #iniCard {
             display: flex;
             flex-shrink: 0;
-            position: relative;
             width: 128px;
-            height: 192px;
-            padding: 8px 8px;
+            height: 156px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: #F0F0F0;
+        }
+
+        .iniCardInitNumber {
+            display: flex;
+            width: 164px;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            background-color: rgba(19,19,19, 0.5);
-            border: 2px solid #F0F0F0;
+            flex: 1 0 0;
 
-            font-family: "Roboto Condensed", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 300;
-            font-style: normal;
-            color: #F0F0F0;
+            color: #131313;
             text-align: center;
-            font-family: "Roboto Condensed";
+            font-family: "Jersey 25";
             font-size: 98px;
             font-style: normal;
-            font-weight: 700;
+            font-weight: 400;
+            line-height: 95%; /* 152px */
+        }
+
+        .iniCardTopElementsDisplay {
+            display: flex;
+            position: relative;
+            align-items: center;
+            align-self: stretch;
+            height: 32px;
+            background-color: #F0F0F0;
         }
 
         #iniCardsDisplay {
@@ -111,31 +141,65 @@
             border: 2px solid #F0F0F0;
             padding-left: 8px;
         }
+        #iniEnterInput:hover {
+            background: #232323;
+        }
+        #iniEnterInput:focus {
+            background: #131313;
+        }
 
-        #button {
-            display: inline-flex;
-            justify-content: center;
+        #newBtn {
+            display: flex;
             align-items: center;
-            text-align: center;
-            font-family: Inter;
+            justify-content: center;
+            background-image: url(media/svg/btnNew_def.svg);
+            background-color: transparent;
+            background-size: 100%;
+            height: 48px; 
+            width: 48px;
             border: 0;
-            padding: 0;
+        }
+        #newBtn:hover {
+            background-image: url(media/svg/btnNew_hov.svg)
+        }
+        #newBtn:active {
+            background-image: url(media/svg/btnNew_act.svg)
         }
 
         #addBtn {
             height: 48px; 
             width: 48px;
+            display: flex;
             align-items: center;
-            display: flex;  
-            border: 0;          
+            justify-content: center;  
+            background-image: url(media/svg/btnPlus_def.svg);
+            background-color: transparent;
+            background-size: 100%;
+            border: 0;
+        }
+        #addBtn:hover {
+            background-image: url(media/svg/btnPlus_hov.svg)
+        }
+        #addBtn:active {
+            background-image: url(media/svg/btnPlus_act.svg)
         }
 
-        .btnSquare {
+        #calcBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url(media/svg/btnCalc_def.svg);
+            background-color: transparent;
+            background-size: 100%;
             height: 48px; 
             width: 48px;
-            align-items: center;
-            display: flex;  
             border: 0;
+        }        
+        #calcBtn:hover {
+            background-image: url(media/svg/btnCalc_hov.svg)
+        }
+        #calcBtn:active {
+            background-image: url(media/svg/btnCalc_act.svg)
         }
 
         .btnContact {
@@ -149,15 +213,18 @@
 
         #btnRemove {
             position: absolute; 
-            align-items: center;
             top: 0%; 
             right: 0%;
-            background: #F0F0F0;
-            height: 32px;
-            width: 32px;
+            height: 48px;
+            width: 48px;
             border: 0;
-            display: flex;
             padding: 0;
+            background-image: url(media/svg/btnDelete.svg);
+            background-color: transparent;
+            background-size: 100%;
+        }
+        #btnRemove:hover {
+            background-image: url(media/svg/btnRemove_hov.svg)
         }
 
         #btnToggle {
@@ -165,11 +232,14 @@
             align-items: center;
             top: 0%; 
             left: 0%;
-            background: #F0F0F0;
-            height: 32px;
-            width: 32px;
+            height: 30px;
+            width: 30px;
             border: 0;
             padding: 0;
+            filter:brightness(1.0);
+        }
+        #btnToggle:hover {
+            filter:brightness(0.9);
         }
 
         .ascii-art { 
@@ -209,15 +279,15 @@
 
 <body>
     <h1 class="header">
+        <img src="media/svg/Logo.svg">
         Dungeons & Dragons <br> Initiative Sorter
     </h1>
 
     <div class="main">
         <div style="display: inline-flex; align-items: center; gap: 8px;">
             <button
-                class = "btnSquare"
+                id = "newBtn"
                 onclick = "startNew()">
-                <img class = "imgIcon" src = "media/svg/btnNew.svg">
             </button>
             <input 
                 id="iniEnterInput"
@@ -226,12 +296,10 @@
             <button 
                 id = "addBtn"
                 onclick = "createCard()">
-                <img class = "imgIcon" src = "media/svg/btnPlus.svg">
             </button>
             <button
-                class = "btnSquare"
+                id = "calcBtn"
                 onclick = "sortCards()">
-                <img class = "imgIcon" src = "media/svg/btnCalc.svg">
             </button>
 
         </div>
@@ -244,19 +312,19 @@
     <div class="footer">
         <a href="https://github.com/SirArsen1/Dungeons-And-Dragons-Initiative-Sorter" 
             class="btnContact" 
-            id="button">
+            id="footerBtn">
             GitHub
         </a>
-        <a style="color:#F0F0F0">|</a>        
+        <a style="color:#AAAAAA">|</a>        
         <a href="https://github.com/SirArsen1/Dungeons-And-Dragons-Initiative-Sorter/issues" 
             class="btnContact" 
-            id="button">
+            id="footerBtn">
             Report
         </a>
-        <a style="color:#F0F0F0">|</a>
+        <a style="color:#AAAAAA">|</a>
         <a href="https://planet-nose-f59.notion.site/Progress-of-D-D-Initiative-Sorter-39d380ac3809801da994da5e5fb05785?source=copy_link" 
             class="btnContact" 
-            id="button">
+            id="footerBtn">
             Roadmap
         </a>
     </div>
@@ -406,7 +474,6 @@
         let initialCardId = 1;
 
         let states = ["media/svg/iconToggleNeut.svg", "media/svg/iconToggleAngry.svg", "media/svg/iconToggleSmile.svg"];
-        let bgColors = ["#F0F0F0;", "red;", "green;"]
 
         function render() {
             const displayID = document.getElementById("iniCardsDisplay")
@@ -415,29 +482,35 @@
             inits.forEach(item => {
                 const card = document.createElement("div");
                 card.setAttribute("id", "iniCard");
-                card.setAttribute("data-id", item.id)
-                card.textContent = item.value;
+                card.setAttribute("data-id", item.id);
                 displayID.appendChild(card);
+
+                const cardTop = document.createElement("div");
+                cardTop.setAttribute("class", "iniCardTopElementsDisplay");
+                card.appendChild(cardTop);
+
+                const cardValue = document.createElement("div");
+                cardValue.setAttribute("class", "iniCardInitNumber");
+                cardValue.textContent = item.value;
+                card.appendChild(cardValue);
 
                 const removeBtn = document.createElement("button");
                 removeBtn.setAttribute("id", "btnRemove");
-                removeBtn.innerHTML = '<img class="imgIcon" src="media/svg/btnDelete.svg">'
                 removeBtn.addEventListener("click", function (e) {
                     e.preventDefault();
                     removeCard(card);
                 });
-                card.appendChild(removeBtn);
+                cardTop.appendChild(removeBtn);
 
                 const charToggleBtn = document.createElement("button");
                 charToggleBtn.setAttribute("id", "btnToggle");
-                charToggleBtn.innerHTML = '<img class="imgIcon" src = "' + states[item.state % states.length] + '" style = "background-color:' + bgColors[item.state % bgColors.length] + '">';
+                charToggleBtn.innerHTML = '<img class="imgIcon" src = "' + states[item.state % states.length] + '">';
                 charToggleBtn.addEventListener("click", function () {
                     item.state++;
                     const toggleState = states[item.state % states.length];
-                    const bgColor = bgColors[item.state % bgColors.length];
-                    charToggleBtn.innerHTML = '<img class="imgIcon" style = "background-color:' + bgColor + '"' + ' src = "' + toggleState + '">';
+                    charToggleBtn.innerHTML = '<img class="imgIcon"' + ' src = "' + toggleState + '">';
                 })
-                card.appendChild(charToggleBtn);
+                cardTop.appendChild(charToggleBtn);
             });
         }
 
