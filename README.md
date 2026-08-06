@@ -1,4 +1,6 @@
 # Dungeons & Dragons Initiative Sorter
+![alt text](image.png)
+
 A simple web programming project main goal of which is to sort initiative for your D&amp;D IRL session.
 
 [![Project's Webpage](https://img.shields.io/badge/Project's%20Webpage-FF0000)](https://sirarsen1.github.io/Dungeons-And-Dragons-Initiative-Sorter/) 
