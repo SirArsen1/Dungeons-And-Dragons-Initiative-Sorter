@@ -117,6 +117,15 @@
             background-color: #F0F0F0;
         }
 
+        .iniCardBotElementsDisplay {
+            display: flex;
+            position: relative;
+            align-items: center;
+            align-self: stretch;
+            height: 32px;
+            background-color: #F0F0F0;
+        }
+
         #iniCardsDisplay {
             display: flex; 
             gap: 24px; 
@@ -148,47 +157,58 @@
             background: #131313;
         }
 
-        #newBtn {
+        #nameTagInput {
+            background: #F0F0F0;
+            color: #131313;
+            font-family: Inter;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            width:100%;
+            border: 0;
+        }
+
+        #btnNew {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url(media/svg/btnNew_def.svg);
+            background-image: url(media/svg/btnNew=def.svg);
             background-color: transparent;
             background-size: 100%;
             height: 48px; 
             width: 48px;
             border: 0;
         }
-        #newBtn:hover {
-            background-image: url(media/svg/btnNew_hov.svg)
+        #btnNew:hover {
+            background-image: url(media/svg/btnNew=hov.svg)
         }
-        #newBtn:active {
-            background-image: url(media/svg/btnNew_act.svg)
+        #btnNew:active {
+            background-image: url(media/svg/btnNew=act.svg)
         }
 
-        #addBtn {
+        #btnAdd {
             height: 48px; 
             width: 48px;
             display: flex;
             align-items: center;
             justify-content: center;  
-            background-image: url(media/svg/btnPlus_def.svg);
+            background-image: url(media/svg/btnAdd=def.svg);
             background-color: transparent;
             background-size: 100%;
             border: 0;
         }
-        #addBtn:hover {
-            background-image: url(media/svg/btnPlus_hov.svg)
+        #btnAdd:hover {
+            background-image: url(media/svg/btnAdd=hov.svg)
         }
-        #addBtn:active {
-            background-image: url(media/svg/btnPlus_act.svg)
+        #btnAdd:active {
+            background-image: url(media/svg/btnAdd=act.svg)
         }
 
         #calcBtn {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url(media/svg/btnCalc_def.svg);
+            background-image: url(media/svg/btnCalc=def.svg);
             background-color: transparent;
             background-size: 100%;
             height: 48px; 
@@ -196,10 +216,10 @@
             border: 0;
         }        
         #calcBtn:hover {
-            background-image: url(media/svg/btnCalc_hov.svg)
+            background-image: url(media/svg/btnCalc=hov.svg)
         }
         #calcBtn:active {
-            background-image: url(media/svg/btnCalc_act.svg)
+            background-image: url(media/svg/btnCalc=act.svg)
         }
 
         .btnContact {
@@ -215,16 +235,16 @@
             position: absolute; 
             top: 0%; 
             right: 0%;
-            height: 48px;
-            width: 48px;
+            height: 32px;
+            width: 32px;
             border: 0;
             padding: 0;
-            background-image: url(media/svg/btnDelete.svg);
+            background-image: url(media/svg/btnRemove=def.svg);
             background-color: transparent;
             background-size: 100%;
         }
         #btnRemove:hover {
-            background-image: url(media/svg/btnRemove_hov.svg)
+            background-image: url(media/svg/btnRemove=hov.svg)
         }
 
         #btnToggle {
@@ -232,8 +252,8 @@
             align-items: center;
             top: 0%; 
             left: 0%;
-            height: 30px;
-            width: 30px;
+            height: 32px;
+            width: 32px;
             border: 0;
             padding: 0;
             filter:brightness(1.0);
@@ -286,7 +306,7 @@
     <div class="main">
         <div style="display: inline-flex; align-items: center; gap: 8px;">
             <button
-                id = "newBtn"
+                id = "btnNew"
                 onclick = "startNew()">
             </button>
             <input 
@@ -294,7 +314,7 @@
                 type="number"
                 placeholder="Add initiative">
             <button 
-                id = "addBtn"
+                id = "btnAdd"
                 onclick = "createCard()">
             </button>
             <button
@@ -473,7 +493,7 @@
         let inits = [];
         let initialCardId = 1;
 
-        let states = ["media/svg/iconToggleNeut.svg", "media/svg/iconToggleAngry.svg", "media/svg/iconToggleSmile.svg"];
+        let states = ["media/svg/CardMood=def.svg", "media/svg/CardMood=angry.svg", "media/svg/CardMood=smile.svg"];
 
         function render() {
             const displayID = document.getElementById("iniCardsDisplay")
@@ -487,7 +507,7 @@
 
                 const cardTop = document.createElement("div");
                 cardTop.setAttribute("class", "iniCardTopElementsDisplay");
-                card.appendChild(cardTop);
+                card.appendChild(cardTop);             
 
                 const cardValue = document.createElement("div");
                 cardValue.setAttribute("class", "iniCardInitNumber");
@@ -502,15 +522,30 @@
                 });
                 cardTop.appendChild(removeBtn);
 
-                const charToggleBtn = document.createElement("button");
-                charToggleBtn.setAttribute("id", "btnToggle");
-                charToggleBtn.innerHTML = '<img class="imgIcon" src = "' + states[item.state % states.length] + '">';
-                charToggleBtn.addEventListener("click", function () {
+                const moodToggle = document.createElement("button");
+                moodToggle.setAttribute("id", "btnToggle");
+                moodToggle.innerHTML = '<img src = "' + states[item.state % states.length] + '">';
+                moodToggle.addEventListener("click", function () {
                     item.state++;
                     const toggleState = states[item.state % states.length];
-                    charToggleBtn.innerHTML = '<img class="imgIcon"' + ' src = "' + toggleState + '">';
+                    moodToggle.innerHTML = '<img src = "' + toggleState + '">';
                 })
-                cardTop.appendChild(charToggleBtn);
+                cardTop.appendChild(moodToggle);
+
+                const cardBot = document.createElement("div");
+                cardBot.setAttribute("class", "iniCardBotElementsDisplay");
+                card.appendChild(cardBot);
+                
+                const nameTag = document.createElement("input");
+                nameTag.setAttribute("id", "nameTagInput")
+                nameTag.placeholder = "Character " + item.id;
+                nameTag.value = item.name;
+                nameTag.addEventListener("input", function (){
+                    item.name = nameTag.value;
+                });
+                
+                cardBot.appendChild(nameTag);
+
             });
         }
 
@@ -530,7 +565,7 @@
                 return;
             }
 
-            inits.push({id:cardId, value:inputValue, state:0});
+            inits.push({id:cardId, value:inputValue, state:0, name:""});
             console.log("updated " + inits);
 
             input.value = "";
@@ -563,7 +598,7 @@
             render();
         }
 
-        const enterBtn = document.getElementById("addBtn");
+        const enterBtn = document.getElementById("btnAdd");
         enterBtn.addEventListener("click", () => console.log("clicky!"));
         window.addEventListener("keydown", ({key}) => {
             if (key == "Enter")
