@@ -21,13 +21,18 @@ There are two ways to remove **initiative cards**:
 
 1. Each card has a **remove button**, by clicking it the button is removed
 2. Left from the **initiative text field**, there is a **restart button**, by clicking it all the cards are removed
+### How To Use Lite Mode
+
+1. To switch to "Lite Mode" just press the "rabbit" button. Notice that after pressing it, the button's icon changes to the one resembling a bird
+2. To switch back to "Default Mode" press the "bird" button, after pressing it, the initial rabbit logo is present again
+
 ## Road map
 - [X] Basic mode
     - [X] Double digit numbers input
     - [X] Sortation of entered numbers input
     - [X] Ability to remove already created cards
 - [ ] Advanced mode
-- [ ] Lite mode
+- [X] Lite mode
 
 ## AI discretion
 Claude AI by Anthropic has been used during the work on this project
