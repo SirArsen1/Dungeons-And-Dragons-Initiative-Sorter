@@ -158,6 +158,8 @@
         }
 
         #nameTagInput {
+            display: relative;
+            border: 0;
             background: #F0F0F0;
             color: #131313;
             font-family: Inter;
@@ -172,7 +174,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url(media/svg/btnNew=def.svg);
+            background-image: url(media/WebpageAssets/btnNew=def.svg);
             background-color: transparent;
             background-size: 100%;
             height: 48px; 
@@ -180,10 +182,10 @@
             border: 0;
         }
         #btnNew:hover {
-            background-image: url(media/svg/btnNew=hov.svg)
+            background-image: url(media/WebpageAssets/btnNew=hov.svg)
         }
         #btnNew:active {
-            background-image: url(media/svg/btnNew=act.svg)
+            background-image: url(media/WebpageAssets/btnNew=act.svg)
         }
 
         #btnAdd {
@@ -192,23 +194,23 @@
             display: flex;
             align-items: center;
             justify-content: center;  
-            background-image: url(media/svg/btnAdd=def.svg);
+            background-image: url(media/WebpageAssets/btnAdd=def.svg);
             background-color: transparent;
             background-size: 100%;
             border: 0;
         }
         #btnAdd:hover {
-            background-image: url(media/svg/btnAdd=hov.svg)
+            background-image: url(media/WebpageAssets/btnAdd=hov.svg)
         }
         #btnAdd:active {
-            background-image: url(media/svg/btnAdd=act.svg)
+            background-image: url(media/WebpageAssets/btnAdd=act.svg)
         }
 
         #calcBtn {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url(media/svg/btnCalc=def.svg);
+            background-image: url(media/WebpageAssets/btnCalc=def.svg);
             background-color: transparent;
             background-size: 100%;
             height: 48px; 
@@ -216,10 +218,10 @@
             border: 0;
         }        
         #calcBtn:hover {
-            background-image: url(media/svg/btnCalc=hov.svg)
+            background-image: url(media/WebpageAssets/btnCalc=hov.svg)
         }
         #calcBtn:active {
-            background-image: url(media/svg/btnCalc=act.svg)
+            background-image: url(media/WebpageAssets/btnCalc=act.svg)
         }
 
         .btnContact {
@@ -232,6 +234,7 @@
         }
 
         #btnRemove {
+            display: relative;
             position: absolute; 
             top: 0%; 
             right: 0%;
@@ -239,12 +242,12 @@
             width: 32px;
             border: 0;
             padding: 0;
-            background-image: url(media/svg/btnRemove=def.svg);
+            background-image: url(media/WebpageAssets/btnRemove=def.svg);
             background-color: transparent;
             background-size: 100%;
         }
         #btnRemove:hover {
-            background-image: url(media/svg/btnRemove=hov.svg)
+            background-image: url(media/WebpageAssets/btnRemove=hov.svg)
         }
 
         #btnToggle {
@@ -291,7 +294,53 @@
             -moz-appearance: textfield;
         }
 
+        #liteBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url(media/WebpageAssets/btnLite=def.svg);
+            background-color: transparent;
+            background-size: 100%;
+            height: 48px; 
+            width: 48px;
+            border: 0;
+        }        
+        #liteBtn:hover {
+            background-image: url(media/WebpageAssets/btnLite=hov.svg)
+        }
+        #liteBtn:active {
+            background-image: url(media/WebpageAssets/btnLite=act.svg)
+        }
         
+        #liteBtn.turtle {
+            background-image: url(media/WebpageAssets/btnLite_turtle=def.svg);
+        }
+        #liteBtn.turtle:hover {
+            background-image: url(media/WebpageAssets/btnLite_turtle=hov.svg);
+        }
+        #liteBtn.turtle:active {
+            background-image: url(media/WebpageAssets/btnLite_turtle=act.svg);
+        }
+
+        .lite-mode .cardBotElements,
+        .lite-mode #nameTagInput,
+        .lite-mode #btnToggle {
+            display: none;
+        }
+        .lite-mode #iniCardsDisplay {
+            gap: 8px;
+        }
+        .lite-mode #iniCard {
+            width: 90px;
+            height: 100px;
+        }
+        .lite-mode #btnRemove {
+            height: 24px;
+            width: 24px;
+        }
+        .lite-mode .iniCardInitNumber {
+            font-size: 80px;
+        }
 
     </style>
 
@@ -299,7 +348,7 @@
 
 <body>
     <h1 class="header">
-        <img src="media/svg/Logo.svg">
+        <img src="media/WebpageAssets/Logo.svg">
         Dungeons & Dragons <br> Initiative Sorter
     </h1>
 
@@ -320,6 +369,10 @@
             <button
                 id = "calcBtn"
                 onclick = "sortCards()">
+            </button>
+            <button 
+                id = "liteBtn"
+                onclick = "liteModeSwitch()">
             </button>
 
         </div>
@@ -493,7 +546,7 @@
         let inits = [];
         let initialCardId = 1;
 
-        let states = ["media/svg/CardMood=def.svg", "media/svg/CardMood=angry.svg", "media/svg/CardMood=smile.svg"];
+        let states = ["media/WebpageAssets/CardMood=def.svg", "media/WebpageAssets/CardMood=angry.svg", "media/WebpageAssets/CardMood=smile.svg"];
 
         function render() {
             const displayID = document.getElementById("iniCardsDisplay")
@@ -573,6 +626,11 @@
             console.log("input cleared")
 
             render()
+        }
+
+        function liteModeSwitch() {
+            document.body.classList.toggle("lite-mode");
+            document.getElementById("liteBtn").classList.toggle("turtle");            
         }
 
         function removeCard(card) {
