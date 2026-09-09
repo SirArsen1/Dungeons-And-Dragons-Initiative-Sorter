@@ -7,7 +7,7 @@ A simple web programming project. The main feature to help track initiatives for
 
 I post my logs here, where I talk about updates and share future plans for the project: 
 
-[![Notion Task Board](https://img.shields.io/badge/Notion%20Task%20Board-F0F0F0)](https://planet-nose-f59.notion.site/Progress-of-D-D-Initiative-Sorter-39d380ac3809801da994da5e5fb05785?source=copy_link)
+[![Notion Task Board & Documentation](https://img.shields.io/badge/Notion%20Task%20Board%20&%20Documentation-F0F0F0)](https://planet-nose-f59.notion.site/Progress-of-D-D-Initiative-Sorter-39d380ac3809801da994da5e5fb05785?source=copy_link)
 
 ## How To Use
 ### How To Add Initiative And Sort
